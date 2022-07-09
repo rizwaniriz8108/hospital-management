@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-sm-12">
+            <mat-card>
+                <mat-card-title>User Registration Form</mat-card-title>
+                <hr>
+                <mat-card-content>
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="registration-form">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Role</mat-label>
+                                    <mat-select formControlName="role" name="role">
+                                        <mat-option value="1">Physician</mat-option>
+                                        <mat-option value="2">Nurse</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-6">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Title</mat-label>
+                                    <mat-select formControlName="title" name="title">
+                                        <mat-option value="Mr.">Mr.</mat-option>
+                                        <mat-option value="Ms.">Ms.</mat-option>
+                                        <mat-option value="Mrs.">Mrs.</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>First name</mat-label>
+                                    <input matInput formControlName="firstname" name="firstname">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Last name</mat-label>
+                                    <input matInput formControlName="lastname" name="lastname">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Email Id</mat-label>
+                                    <input matInput formControlName="email" name="email">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-6">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Date of Birth</mat-label>
+                                    <input matInput [matDatepicker]="datepicker">
+                                    <mat-hint>MM/DD/YYYY</mat-hint>
+                                    <mat-datepicker-toggle matSuffix [for]="datepicker" name="dob">
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #datepicker>
+                                        <mat-datepicker-actions>
+                                            <button mat-button matDatepickerCancel>Cancel</button>
+                                            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                                        </mat-datepicker-actions>
+                                    </mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div>
+                            <button mat-raised-button color="primary" type="submit"
+                                [disabled]="!registerForm.valid">Register<mat-icon>
+                                    chevron_right</mat-icon></button>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<mat-card class="cards border border-danger">
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()">
+        <h2>User Log-In</h2>
+        <mat-error *ngIf="inValidLogin">
+          {{ errorMessage }}
+        </mat-error>
+        <mat-form-field>
+          <input matInput type="email" placeholder="Email" [(ngModel)]="username" name="username" required>
+          <mat-error>
+            Please provide a valid email address
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+          <mat-error>
+            Please provide a valid password
+          </mat-error>
+        </mat-form-field>
+        <button class="forgot-password" mat-flat-button [routerLink]="['/forgot-password']" underline="none">
+          forgot password
+          </button>
+        <br><br>
+        <button class="border border-danger" mat-raised-button color="primary">Login</button>
+      </form>
+      <br>
+    </mat-card-content>
+  </mat-card>

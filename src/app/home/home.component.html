@@ -1,0 +1,17 @@
+<p>
+    <mat-toolbar color="warn">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>City Hospital</span>
+      <span class="example-spacer"></span>
+  
+      <button mat-button [routerLink]="['/login']">Login</button>
+  
+      <button mat-button [routerLink]="['/patient/registration']">Patient registration</button>
+  
+    </mat-toolbar>
+  </p>
+
+  <!-- <h1 style="text-align: center;" class="mat-display-1">Welcome to city Hospital</h1> -->
+  <router-outlet></router-outlet>

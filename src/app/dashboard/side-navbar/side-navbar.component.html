@@ -1,0 +1,44 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'push' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item [routerLink]="['../admin/dashboard']">
+        <mat-icon>dashboard</mat-icon> Dashboard</mat-list-item >
+      <mat-list-item [routerLink]="['../admin/user-registration']">
+        <mat-icon>person_add</mat-icon> Add user</mat-list-item >
+    </mat-nav-list>
+
+    <mat-expansion-panel [class.mat-elevation-z0]="true">
+      <mat-expansion-panel-header>
+        <mat-icon>view_list</mat-icon>User list
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <mat-list-item [routerLink]="['../']" >
+          <mat-icon mat-list-icon>notifications</mat-icon> Physician
+        </mat-list-item>
+        <mat-list-item [routerLink]="['../']" >
+          <mat-icon mat-list-icon>notifications</mat-icon> Nurse
+        </mat-list-item>
+        <mat-list-item [routerLink]="['../']" >
+          <mat-icon mat-list-icon>notifications</mat-icon> Patient
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-expansion-panel>
+
+    <mat-nav-list>
+      <mat-list-item><mat-icon>logout</mat-icon>Logout</mat-list-item>
+    </mat-nav-list>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="warn">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>City hospital</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

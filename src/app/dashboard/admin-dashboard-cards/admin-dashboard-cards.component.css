@@ -1,0 +1,19 @@
+
+/* .cards{
+    width: 10rem;
+  } */
+  /* .tiles{
+    max-width: 250px;
+    margin-left:60px;
+    margin-top:140px;
+    display: inline-block;
+  } */
+
+  .cards:hover{
+    transform: scale(1.2);
+    transition: transform 130ms ease-in-out;
+  }
+
+  .card-content{
+    text-align: center;
+  }
