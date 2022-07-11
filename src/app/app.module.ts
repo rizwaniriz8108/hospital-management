@@ -12,7 +12,7 @@ import { DisplayUsersModule } from './display-users/display-users.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ToastrModule } from 'ngx-toastr';
+import {NgToastModule} from 'ng-angular-popup';
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { ToastrModule } from 'ngx-toastr';
     HomeComponent
   ],
   imports: [
+    NgToastModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -29,8 +30,7 @@ import { ToastrModule } from 'ngx-toastr';
     RegistrationModule,
     DisplayUsersModule,
     HttpClientModule,
-    NgbModule,
-    ToastrModule.forRoot()
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

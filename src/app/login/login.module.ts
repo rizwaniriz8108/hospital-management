@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -22,8 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
-    ToastrModule.forRoot()
+    AppRoutingModule
   ],
   exports: [
     UserLoginComponent,

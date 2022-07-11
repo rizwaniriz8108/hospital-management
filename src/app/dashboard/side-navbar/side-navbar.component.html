@@ -14,25 +14,25 @@
         <mat-icon>view_list</mat-icon>User list
       </mat-expansion-panel-header>
       <mat-nav-list>
-        <mat-list-item [routerLink]="['../']" >
+        <mat-list-item [routerLink]="['../admin/display-user/2']" >
           <mat-icon mat-list-icon>notifications</mat-icon> Physician
         </mat-list-item>
-        <mat-list-item [routerLink]="['../']" >
+        <mat-list-item [routerLink]="['../admin/display-user/3']" >
           <mat-icon mat-list-icon>notifications</mat-icon> Nurse
         </mat-list-item>
-        <mat-list-item [routerLink]="['../']" >
+        <mat-list-item [routerLink]="['../admin/display-user/4']" >
           <mat-icon mat-list-icon>notifications</mat-icon> Patient
         </mat-list-item>
       </mat-nav-list>
     </mat-expansion-panel>
 
     <mat-nav-list>
-      <mat-list-item><mat-icon>logout</mat-icon>Logout</mat-list-item>
+      <mat-list-item (click)="logout()"><mat-icon>logout</mat-icon>Logout</mat-list-item>
     </mat-nav-list>
 
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="warn">
+    <mat-toolbar color="primary">
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>

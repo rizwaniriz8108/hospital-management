@@ -11,8 +11,8 @@
                                 <mat-form-field appearance="fill">
                                     <mat-label>Role</mat-label>
                                     <mat-select formControlName="role" name="role">
-                                        <mat-option value="1">Physician</mat-option>
-                                        <mat-option value="2">Nurse</mat-option>
+                                        <mat-option value="2">Physician</mat-option>
+                                        <mat-option value="3">Nurse</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
@@ -51,7 +51,7 @@
                             <div class="col-sm-6">
                                 <mat-form-field appearance="fill">
                                     <mat-label>Date of Birth</mat-label>
-                                    <input matInput [matDatepicker]="datepicker">
+                                    <input matInput [matDatepicker]="datepicker" name="dob">
                                     <mat-hint>MM/DD/YYYY</mat-hint>
                                     <mat-datepicker-toggle matSuffix [for]="datepicker" name="dob">
                                     </mat-datepicker-toggle>

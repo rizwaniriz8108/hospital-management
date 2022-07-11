@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DashboardService} from 'src/app/shared/dashboard.service';
 
 @Component({
   selector: 'app-admin-dashboard-cards',
@@ -8,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class AdminDashboardCardsComponent implements OnInit {
 
   greetMessage : string = '';
-  constructor() { }
+  constructor(private dashboardService : DashboardService) { }
+
+  physicianCount : number = 0;
+  nurseCount : number = 0;
+  patientCount : number = 0;
 
   ngOnInit(): void {
     let currentDate = new Date();
@@ -20,6 +25,17 @@ export class AdminDashboardCardsComponent implements OnInit {
     }else if(hours > 17 && hours <= 24){
       this.greetMessage = "Good Evening, Admin";
     }
+   this.getAllUserCount();
+  }
+
+  getAllUserCount(){
+    this.dashboardService.getAllUsersCount().subscribe({
+      next: (response) => {
+        this.physicianCount = response.physicianCount;
+        this.nurseCount = response.nurseCount;
+        this.patientCount = response.patientCount;
+      }
+    })
   }
 
 }

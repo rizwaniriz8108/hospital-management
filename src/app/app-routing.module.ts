@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardCardsComponent } from './dashboard/admin-dashboard-cards/admin-dashboard-cards.component';
 import { AdminComponent } from './dashboard/admin/admin.component';
+import { NurseComponent } from './dashboard/nurse/nurse.component';
+import { PatientComponent } from './dashboard/patient/patient.component';
+import { PhysicianComponent } from './dashboard/physician/physician.component';
 import { DisplayHospitalUserComponent } from './display-users/display-hospital-user/display-hospital-user.component';
 import { HomeComponent } from './home/home.component';
 import { ChangePasswordComponent } from './login/change-password/change-password.component';
@@ -27,6 +30,15 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'physician/dashboard', component: PhysicianComponent
+  },
+  {
+    path: 'nurse/dashboard', component: NurseComponent
+  },
+  {
+    path: 'patient/dashboard', component: PatientComponent
+  },
+  {
     path: 'patient-registration', component: PatientRegistrationComponent
   },
 
@@ -34,13 +46,13 @@ const routes: Routes = [
     path: 'admin', component: AdminComponent,
     children: [
       {
-        path: 'dashboard', component: AdminDashboardCardsComponent//, canActivate: [AuthGuard]
+        path: 'dashboard', component: AdminDashboardCardsComponent, canActivate: [AuthGuard]
       },
       {
-        path: 'user-registration', component: HospitalUserRegistrationComponent
+        path: 'user-registration', component: HospitalUserRegistrationComponent, canActivate: [AuthGuard]
       },
       {
-        path: 'display-user', component: DisplayHospitalUserComponent
+        path: 'display-user/:roleId', component: DisplayHospitalUserComponent, canActivate: [AuthGuard]
       }
     ]
   }

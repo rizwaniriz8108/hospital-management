@@ -2,32 +2,9 @@ import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
-}
-
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack'];
+import { HospitalUserData } from 'src/app/shared/hospitalUserData';
+import { RegisterUserService } from 'src/app/shared/register-user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-display-hospital-user',
@@ -37,19 +14,43 @@ const NAMES: string[] = [
 
 
 export class DisplayHospitalUserComponent implements AfterViewInit{
-
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
-  dataSource: MatTableDataSource<UserData>;
+  
+  //By default display Physician (role-id = 2)
+  roleId: number = 2;
+  displayedColumns: string[] = ['employeeId', 'firstname', 'lastname', 'status', 'dateOfJoining'];
+  dataSource !: MatTableDataSource<HospitalUserData>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor() {
-    // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
+  constructor(private userService : RegisterUserService, private _Activatedroute:ActivatedRoute) {
+    this._Activatedroute.params.subscribe(params => { 
+      this.roleId = params['roleId'];   
+      console.log("RoleId "+this.roleId);
+      userService.displayUser(this.roleId).subscribe({
+        next: (response) => {
+          let userData = response.map((user) => {
+            if(user.firstName == null){
+              user.firstName = '--';
+            }
+            if(user.lastName == null){
+              user.lastName = '--';
+            }
+            return user;
+          })
+          this.dataSource = new MatTableDataSource(userData);
+        },
+        error: (e) => {
+         console.log(e);
+        }
+      })
+    });
+   
+    
+    //const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+   // this.dataSource = new MatTableDataSource(users);
   }
 
   ngAfterViewInit() {
@@ -68,18 +69,18 @@ export class DisplayHospitalUserComponent implements AfterViewInit{
 }
 
 /** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
+// function createNewUser(id: number): UserData {
+//   const name =
+//     NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
+//     ' ' +
+//     NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
+//     '.';
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-  };
+//   return {
+//     id: id.toString(),
+//     name: name,
+//     progress: Math.round(Math.random() * 100).toString(),
+//     fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
+//   };
 
-}
+// }
