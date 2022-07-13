@@ -10,10 +10,11 @@ mat-form-field {
 
 mat-card {
   max-height: 100%;
-    max-width: 500px;
+    max-width: 100%;
     text-align: center;
   }
   
   mat-form-field {
     display: block;
   }
+

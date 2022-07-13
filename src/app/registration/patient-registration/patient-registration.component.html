@@ -1,10 +1,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-7">
-           
-        </div>
-        <div class="col-sm-5 mt-3">
+        <div class="col-sm-12 mt-3">
             <mat-card>
                 <mat-card-title>Patient Registration Form</mat-card-title>
                 <hr>
@@ -45,46 +42,63 @@
                                 </mat-form-field>
                             </div>
                         </div>
-                        <div>
-                            <mat-form-field appearance="fill">
-                                <mat-label>Date of Birth</mat-label>
-                                <input matInput [matDatepicker]="datepicker">
-                                <mat-hint>MM/DD/YYYY</mat-hint>
-                                <mat-datepicker-toggle matSuffix [for]="datepicker" name="dob">
-                                </mat-datepicker-toggle>
-                                <mat-datepicker #datepicker>
-                                    <mat-datepicker-actions>
-                                        <button mat-button matDatepickerCancel>Cancel</button>
-                                        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
-                                    </mat-datepicker-actions>
-                                </mat-datepicker>
-                            </mat-form-field>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Date of Birth</mat-label>
+                                    <input matInput [matDatepicker]="datepicker">
+                                    <mat-hint>MM/DD/YYYY</mat-hint>
+                                    <mat-datepicker-toggle matSuffix [for]="datepicker" name="dob">
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #datepicker>
+                                        <mat-datepicker-actions>
+                                            <button mat-button matDatepickerCancel>Cancel</button>
+                                            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                                        </mat-datepicker-actions>
+                                    </mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-6">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Gender</mat-label>
+                                    <mat-select formControlName="gender" name="gender">
+                                        <mat-option value="Male">Male</mat-option>
+                                        <mat-option value="Female">Female</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
                         </div>
                         <br>
-                        <div>
-                            <mat-form-field appearance="outline" class="form-field">
-                                <mat-label>Password</mat-label>
-                                <input matInput formControlName="password" name="password" type="password">
-                                <mat-error *ngIf="registerForm.value.password">Password must be a combination of lower-case,
-                                    upper-case, numbers
-                                    and at least 8 characters long</mat-error>
-                            </mat-form-field>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <mat-form-field appearance="outline" class="form-field">
+                                    <mat-label>Password</mat-label>
+                                    <input matInput formControlName="password" name="password" type="password">
+                                    <mat-error *ngIf="registerForm.value.password">Password must be a combination of lower-case,
+                                        upper-case, numbers
+                                        and at least 8 characters long</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-6">
+                                <mat-form-field appearance="outline" class="form-field">
+                                    <mat-label>Confirm Password</mat-label>
+                                    <input matInput formControlName="confirmPassword" name="confirmPassword" type="password"
+                                        required pattern="{{registerForm.value.password}}">
+                                    <mat-error *ngIf="registerForm.value.confirmPassword">Passwords do not match.</mat-error>
+                                </mat-form-field>
+                            </div>
                         </div>
+
+                
                         <br>
+                       
                         <div>
-                            <mat-form-field appearance="outline" class="form-field">
-                                <mat-label>Confirm Password</mat-label>
-                                <input matInput formControlName="confirmPassword" name="confirmPassword" type="password"
-                                    required pattern="{{registerForm.value.password}}">
-                                <mat-error *ngIf="registerForm.value.confirmPassword">Passwords do not match.</mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div>
-                            <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">Register
+                            <button mat-raised-button class="btn-lg" color="primary" type="submit" [disabled]="!registerForm.valid">Register
                                 <mat-icon>
                                     chevron_right</mat-icon></button>
                         </div>
                     </form>
+                    <br>
                 </mat-card-content>
             </mat-card>
         </div>

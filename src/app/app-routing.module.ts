@@ -26,6 +26,9 @@ const routes: Routes = [
       },
       {
         path: 'forgot-password', component: ForgotPasswordComponent
+      },
+      {
+        path: 'change-password', component: ChangePasswordComponent//, canActivate: [AuthGuard]
       }
     ]
   },
@@ -46,19 +49,15 @@ const routes: Routes = [
     path: 'admin', component: AdminComponent,
     children: [
       {
-        path: 'dashboard', component: AdminDashboardCardsComponent, canActivate: [AuthGuard]
+        path: 'dashboard', component: AdminDashboardCardsComponent//, canActivate: [AuthGuard]
       },
       {
-        path: 'user-registration', component: HospitalUserRegistrationComponent, canActivate: [AuthGuard]
+        path: 'user-registration', component: HospitalUserRegistrationComponent//, canActivate: [AuthGuard]
       },
       {
-        path: 'display-user/:roleId', component: DisplayHospitalUserComponent, canActivate: [AuthGuard]
+        path: 'display-user/:roleId', component: DisplayHospitalUserComponent//, canActivate: [AuthGuard]
       }
     ]
-  }
-  ,
-  {
-    path: 'change-password', component: ChangePasswordComponent
   }
 ];
 

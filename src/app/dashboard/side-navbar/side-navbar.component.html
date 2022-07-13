@@ -5,11 +5,19 @@
     <mat-nav-list>
       <mat-list-item [routerLink]="['../admin/dashboard']">
         <mat-icon>dashboard</mat-icon> Dashboard</mat-list-item >
-      <mat-list-item [routerLink]="['../admin/user-registration']">
-        <mat-icon>person_add</mat-icon> Add user</mat-list-item >
-    </mat-nav-list>
+      <mat-list-item *ngIf="role === 'ROLE_Admin'" [routerLink]="['../admin/user-registration']">
+        <mat-icon>person_add</mat-icon> Add user
+      </mat-list-item >
+      <mat-list-item *ngIf="role === 'ROLE_Physician'" [routerLink]="['../admin/user-registration']">
+        <mat-icon>person_add</mat-icon> Add appointment
+      </mat-list-item >
+      <mat-list-item *ngIf="role === 'ROLE_Physician'" [routerLink]="['../admin/user-registration']">
+        <mat-icon>person_add</mat-icon> Patient
+      </mat-list-item >
+      </mat-nav-list>
 
-    <mat-expansion-panel [class.mat-elevation-z0]="true">
+      <!-- FOR ADMIN ONLY-->
+    <mat-expansion-panel *ngIf="role === 'ROLE_Admin'" [class.mat-elevation-z0]="true">
       <mat-expansion-panel-header>
         <mat-icon>view_list</mat-icon>User list
       </mat-expansion-panel-header>
@@ -25,6 +33,7 @@
         </mat-list-item>
       </mat-nav-list>
     </mat-expansion-panel>
+     <!-- FOR ADMIN ONLY-->
 
     <mat-nav-list>
       <mat-list-item (click)="logout()"><mat-icon>logout</mat-icon>Logout</mat-list-item>

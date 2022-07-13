@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row mt-4">
-        <div class="col-sm-12">
+        <div class="col-sm-12 ">
             <mat-card>
                 <mat-card-title>User Registration Form</mat-card-title>
                 <hr>
@@ -51,8 +51,7 @@
                             <div class="col-sm-6">
                                 <mat-form-field appearance="fill">
                                     <mat-label>Date of Birth</mat-label>
-                                    <input matInput [matDatepicker]="datepicker" name="dob">
-                                    <mat-hint>MM/DD/YYYY</mat-hint>
+                                    <input matInput [matDatepicker]="datepicker" datePickerFormat="DD/MM/YYYY"  name="dob">
                                     <mat-datepicker-toggle matSuffix [for]="datepicker" name="dob">
                                     </mat-datepicker-toggle>
                                     <mat-datepicker #datepicker>

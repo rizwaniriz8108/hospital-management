@@ -9,7 +9,7 @@
     display: inline-block;
   } */
 
-  .cards:hover{
+  .tohover:hover{
     transform: scale(1.1);
     transition: transform 130ms ease-in-out;
   }

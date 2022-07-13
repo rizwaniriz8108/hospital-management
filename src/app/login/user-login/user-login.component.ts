@@ -19,11 +19,22 @@ export class UserLoginComponent implements OnInit {
     private toast: NgToastService) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem("token") != null) {
+      this.authService.logout().subscribe({
+        next: (response) => {
+          console.log(response);
+          localStorage.removeItem("token");
+        },
+
+        error: (err) => console.error(err)
+      });
+    }
+
   }
 
   onSubmit() {
-    if(this.username === '' || this.password === '' || this.username === ' ' || this.password === ' '){
-      return ;
+    if (this.username === '' || this.password === '' || this.username === ' ' || this.password === ' ') {
+      return;
     }
     let requestObj = {
       username: this.username,
@@ -32,32 +43,39 @@ export class UserLoginComponent implements OnInit {
     this.authService.authenticateUser(requestObj).subscribe({
       next: (response) => {
         localStorage.setItem("token", response.token);
-        this.toast.success({ detail: "Login success", summary: "Welcome, "+this.username, duration: 2000, sticky: true });
+        this.toast.success({ detail: "Login success", summary: "Welcome, " + this.username, duration: 2000, sticky: true });
         let role = JSON.parse(atob(response.token.split(".")[1])).roles[0].authority;
+        //SETTING THE ROLE VALUE 
+        this.authService.userRole.next(role);
         if (role === 'ROLE_Admin') {
-          this.route.navigate(['admin/dashboard'])
-        }
-        if (role === 'ROLE_Physician') {
-          if(response.isPasswordChanged){
-            this.route.navigate(['physician/dashboard'])
+          if (response.passwordChanged) {
+            this.route.navigate(['admin/dashboard'])
           }else{
-            this.toast.success({ detail: "Login success", summary: "Please change your password" , duration: 2000, sticky: true });
+            this.toast.success({ detail: "Login success", summary: "Please change your password", duration: 2000, sticky: true });
             this.route.navigate(['change-password']);
           }
-          
+        }
+        if (role === 'ROLE_Physician') {
+          if (response.passwordChanged) {
+            this.route.navigate(['physician/dashboard'])
+          } else {
+            this.toast.success({ detail: "Login success", summary: "Please change your password", duration: 2000, sticky: true });
+            this.route.navigate(['change-password']);
+          }
+
         }
         if (role === 'ROLE_Nurse') {
-          if(response.isPasswordChanged){
+          if (response.passwordChanged) {
             this.route.navigate(['nurse/dashboard'])
-          }else{
-            this.toast.success({ detail: "Login success", summary: "Please change your password" , duration: 2000, sticky: true });
+          } else {
+            this.toast.success({ detail: "Login success", summary: "Please change your password", duration: 2000, sticky: true });
             this.route.navigate(['change-password']);
           }
         }
         if (role === 'ROLE_Patient') {
-          if(response.isPasswordChanged){
+          if (response.passwordChanged) {
             this.route.navigate(['patient/dashboard'])
-          }else{
+          } else {
             this.route.navigate(['change-password']);
           }
         }
@@ -65,15 +83,18 @@ export class UserLoginComponent implements OnInit {
       error: (e) => {
         this.inValidLogin = true;
         console.log(e.message.toString());
-        if(e.message === "Bad credentials"){
+        if (e.error.message === "Bad credentials") {
           this.toast.error({ detail: "Bad Credentials", summary: "Please try again", duration: 2000, sticky: true });
         }
-        else if(e.message === "User is Unauthorized" || e.message === "Invalid Token"){
+         
+        if (e.error.message === "User is Unauthorized" || e.error.message === "Invalid Token") {
           this.toast.error({ detail: "Login failed", summary: "Please try again", duration: 2000, sticky: true });
-        }else{
-          this.toast.error({ detail: "Login failed", summary: "Please try again", duration: 2000, sticky: true });
-        }
+        } 
         
+        if(e.error.httpStatus === 'BAD_REQUEST'){
+          this.toast.error({ detail: e.error.message, summary: "", duration: 2000, sticky: true });
+        }
+
       }
     })
   }

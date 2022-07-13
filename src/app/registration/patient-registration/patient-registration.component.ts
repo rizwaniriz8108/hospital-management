@@ -16,6 +16,7 @@ export class PatientRegistrationComponent implements OnInit {
 
   registerForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
+    gender: new FormControl('', [Validators.required]),
     firstname: new FormControl('', [Validators.required]),
     lastname: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),

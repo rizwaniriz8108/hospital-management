@@ -1,10 +1,27 @@
 <div class="container">
-    <div class="row mt-3">
-        <!-- greeting -->
-        <h1 style="text-align: center;" class="mat-display-1">{{ greetMessage }}</h1>
+
+    <div class="row mt-4">
+        <div class="col-sm-12">
+            <!-- <mat-card class="cards">
+                <div class="card-content">
+                    <img mat-card-sm-image src="assets/pharmacy-icon.jpg">
+                    <mat-card-title>Pharmacist</mat-card-title>
+                    <mat-card-subtitle>count</mat-card-subtitle>
+                    <mat-card-content>100</mat-card-content>
+                </div>
+            </mat-card> -->
+            <mat-card class="cards">
+                <!-- greeting -->
+                <h1 style="text-align: center;" class="mat-display-1">{{ greetMessage }}</h1>
+            </mat-card>
+
+        </div>
+    </div>
+
+    <div class="row mt-5">
         <!-- Dashboard Cards -->
         <div class="col-sm-3">
-            <mat-card class="cards border border-danger">
+            <mat-card class="cards tohover">
                 <div class="card-content">
                     <img mat-card-sm-image src="assets/doctor-icon.webp">
                     <mat-card-title>Physician</mat-card-title>
@@ -14,7 +31,7 @@
             </mat-card>
         </div>
         <div class="col-sm-3">
-            <mat-card class="cards border border-danger">
+            <mat-card class="cards tohover">
                 <div class="card-content">
                     <img mat-card-sm-image src="assets/nurse-icon.webp">
                     <mat-card-title>Nurse</mat-card-title>
@@ -24,7 +41,7 @@
             </mat-card>
         </div>
         <div class="col-sm-3">
-            <mat-card class="cards border border-danger">
+            <mat-card class="cards tohover">
                 <div class="card-content">
                     <img mat-card-sm-image src="assets/ambulance-icon.webp">
                     <mat-card-title>Patient</mat-card-title>
@@ -34,7 +51,7 @@
             </mat-card>
         </div>
         <div class="col-sm-3">
-            <mat-card class="cards border border-danger">
+            <mat-card class="cards tohover">
                 <div class="card-content">
                     <img mat-card-sm-image src="assets/pharmacy-icon.jpg">
                     <mat-card-title>Pharmacist</mat-card-title>
@@ -44,17 +61,4 @@
             </mat-card>
         </div>
     </div>
-    <div class="row mt-3">
-        <div class="col-sm-12">
-            <mat-card class="cards border border-danger">
-                <div class="card-content">
-                    <img mat-card-sm-image src="assets/pharmacy-icon.jpg">
-                    <mat-card-title>Pharmacist</mat-card-title>
-                    <mat-card-subtitle>count</mat-card-subtitle>
-                    <mat-card-content>100</mat-card-content>
-                </div>
-            </mat-card>
-        </div>
-    </div>
-
 </div>

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { AuthenticationService } from 'src/app/shared/authentication.service';
+
+import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-forgot-password',
@@ -8,14 +12,26 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService : AuthenticationService, private toast: NgToastService, 
+    private route: Router) { }
 
   forgotPasswordForm = new FormGroup({
     email : new FormControl('', [Validators.required, Validators.email])
   });
 
   onSubmit(){
-    
+    if(this.forgotPasswordForm.valid === false){
+      return ;
+    }
+    this.authService.forgotPassword(this.forgotPasswordForm.value.email).subscribe({
+      next: (response) => {
+        this.toast.success({ detail: "Mail sent", summary: response.message, duration: 2000});
+        this.route.navigate(['login']);
+      },
+      error: (err) => {
+        this.toast.error({ detail: err.message, summary: "Something went wrong", duration: 2000});
+      }
+    })
   }
 
   ngOnInit(): void {

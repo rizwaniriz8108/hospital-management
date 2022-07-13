@@ -9,10 +9,10 @@ export class DashboardService {
   constructor(private http : HttpClient) { }
   API_URL : string = "http://localhost:8900";
 
-  requestOptions = {                                                                                                                                                                                 
-    headers: new HttpHeaders({ Authorization: "Bearer " + localStorage.getItem("token")})
-  };
   getAllUsersCount(){
-    return this.http.get<any>(this.API_URL + "/user/getAllUserCount", this.requestOptions);
+    let requestOptions = {                                                                                                                                                                                 
+      headers: new HttpHeaders({ Authorization: "Bearer " + localStorage.getItem("token")})
+    };
+    return this.http.get<any>(this.API_URL + "/user/getAllUserCount", requestOptions);
   }
 }

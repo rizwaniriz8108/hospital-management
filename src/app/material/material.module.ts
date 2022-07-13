@@ -14,6 +14,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSortModule} from '@angular/material/sort';
 
 
 const material = [
@@ -26,6 +27,7 @@ const material = [
   MatTableModule,
   MatSlideToggleModule,
   MatSelectModule,
+  MatSortModule,
   MatOptionModule,
   MatDatepickerModule,
   MatNativeDateModule,

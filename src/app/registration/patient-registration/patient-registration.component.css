@@ -1,8 +1,16 @@
 mat-card {
-    max-width: 500px;
+    max-width: 100%;
     text-align: center;
   }
   
   mat-form-field {
     display: block;
   }
+
+/* .container{
+  height: 650px;  
+  color: #fff;
+  background-image: url('../../../assets/patient-register-background.webp');
+  background-size: 100% ;  
+  background-size: cover;  
+} */

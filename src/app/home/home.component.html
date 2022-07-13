@@ -5,6 +5,8 @@
       </button>
       <span>City Hospital</span>
       <span class="example-spacer"></span>
+
+      <button mat-button [routerLink]="['/']">Home</button>
   
       <button mat-button [routerLink]="['/login']">Login</button>
   
@@ -12,6 +14,15 @@
   
     </mat-toolbar>
   </p>
+  <!-- <div class="container">
+    <div class="jumbotron mt-5">
+      <h1 class="display-1">WELCOME TO CT-HOSPITAL</h1>
+      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+      <hr class="my-4">
+      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </div>
+  </div> -->
 
   <!-- <h1 style="text-align: center;" class="mat-display-1">Welcome to city Hospital</h1> -->
   <router-outlet></router-outlet>
