@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardCardsComponent } from './dashboard/admin-dashboard-cards/admin-dashboard-cards.component';
-import { AdminComponent } from './dashboard/admin/admin.component';
+import { MainPageComponent } from './dashboard/main-page/main-page.component';
 import { NurseComponent } from './dashboard/nurse/nurse.component';
 import { PatientComponent } from './dashboard/patient/patient.component';
 import { PhysicianComponent } from './dashboard/physician/physician.component';
@@ -33,9 +33,6 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'physician/dashboard', component: PhysicianComponent
-  },
-  {
     path: 'nurse/dashboard', component: NurseComponent
   },
   {
@@ -46,7 +43,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'admin', component: AdminComponent,
+    path: 'admin', component: MainPageComponent,
     children: [
       {
         path: 'dashboard', component: AdminDashboardCardsComponent//, canActivate: [AuthGuard]
@@ -56,6 +53,15 @@ const routes: Routes = [
       },
       {
         path: 'display-user/:roleId', component: DisplayHospitalUserComponent//, canActivate: [AuthGuard]
+      }
+    ]
+  },
+  
+  {
+    path: 'physician', component: MainPageComponent,
+    children: [
+      {
+        path: 'dashboard', component: PhysicianComponent//, canActivate: [AuthGuard]
       }
     ]
   }

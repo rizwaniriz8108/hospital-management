@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminComponent } from './admin/admin.component';
 import { PhysicianComponent } from './physician/physician.component';
 import { NurseComponent } from './nurse/nurse.component';
 import { PatientComponent } from './patient/patient.component';
@@ -14,17 +13,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MainPageComponent } from './main-page/main-page.component';
 
 
 
 @NgModule({
   declarations: [
-    AdminComponent,
     PhysicianComponent,
     NurseComponent,
     PatientComponent,
     AdminDashboardCardsComponent,
-    SideNavbarComponent
+    SideNavbarComponent,
+    MainPageComponent
   ],
   imports: [
     CommonModule,
@@ -38,12 +38,12 @@ import { MatListModule } from '@angular/material/list';
     MatListModule
   ],
   exports: [
-    AdminComponent,
     PhysicianComponent,
     NurseComponent,
     PatientComponent,
     AdminDashboardCardsComponent,
-    SideNavbarComponent
+    SideNavbarComponent,
+    MainPageComponent
   ]
 })
 export class DashboardModule { }
