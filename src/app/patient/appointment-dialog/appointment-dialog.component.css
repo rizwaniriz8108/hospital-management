@@ -1,0 +1,7 @@
+mat-form-field {
+    display: block;
+  }
+/* To specify height */
+.e-datetimepicker.e-popup {
+  height: 100px;
+}

@@ -1,29 +1,57 @@
-<mat-card class="cards">
-    <mat-card-content>
-      <form (ngSubmit)="onSubmit()">
-        <h1><strong>Log-In</strong></h1>
-        <mat-error *ngIf="inValidLogin">
-          {{ errorMessage }}
-        </mat-error>
-        <mat-form-field>
-          <input matInput type="email" placeholder="Email" [(ngModel)]="username" name="username" required>
-          <mat-error>
-            Please provide a valid email address
-          </mat-error>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
-          <mat-error>
-            Please provide a valid password
-          </mat-error>
-        </mat-form-field>
-        <a  class="forgot-password" mat-flat-button [routerLink]="['/forgot-password']" underline="none">
-          forgot password
-        </a>
-        <br><br>
-        <button mat-raised-button color="primary">Login</button>
-      </form>
-      <br>
-    </mat-card-content>
-  </mat-card>
+<div class="container-fluid">
+  <div class="row">
+   
+    <div class="col-sm-12">
+      <div class="card border-0" style="width: 100%;">
+
+        <img src="../../../assets/loginpage.webp"  class="card-img-top" alt="...">
+
+        <div class="card-body">
+         
+
+           <!-- login form -->
+
+      <div class="container text-center mt-5">
+            <h1>Sign In</h1>
+            <form (ngSubmit)="onSubmit()">
+              <mat-error *ngIf="inValidLogin">
+                {{ errorMessage }}
+              </mat-error>
+              <mat-form-field appearance="outline">
+                <input matInput  type="email" placeholder="Email" [(ngModel)]="username" name="username" required>
+                <mat-error>
+                  Please provide a valid email address
+                </mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="outline">
+                <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+                <mat-error>
+                  Please provide a valid password
+                </mat-error>
+              </mat-form-field>
+              <br>
+              <button mat-raised-button  color="primary">Login</button>
+              <br><br>
+              <a style="cursor: pointer; text-decoration: underline; color: cornflowerblue;" class="forgot-password" mat-flat-button [routerLink]="['/forgot-password']" underline="none">
+                Forgot Password
+              </a>
+            </form>
+            <br>
+          <!-- </mat-card-content>
+        </mat-card> -->
+      </div>
+      
+      
+
+      <!-- login form -->
+
+
+        </div>
+      </div>
+     
+
+    </div>
+  </div>
+</div>
+

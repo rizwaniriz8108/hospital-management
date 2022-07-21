@@ -1,28 +1,24 @@
-<p>
-    <mat-toolbar color="primary">
+ <p class="app-toolbar">
+    <mat-toolbar color="primary" >
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>City Hospital</span>
+      <span>CT-Hospital</span>
       <span class="example-spacer"></span>
 
-      <button mat-button [routerLink]="['/']">Home</button>
+      <button mat-button [routerLink]="['/home']"> Home</button>
   
-      <button mat-button [routerLink]="['/login']">Login</button>
+      <button mat-button [routerLink]="['/login']"> Login</button>
   
-      <button mat-button [routerLink]="['/patient/registration']">Patient registration</button>
+      <button mat-button [routerLink]="['/patient/registration']"> Patient Registration</button>
   
+      <button mat-button [routerLink]="['/home']"> About Us</button>
+  
+      <button mat-button [routerLink]="['/home']"> Contact Us</button>
+
     </mat-toolbar>
   </p>
-  <!-- <div class="container">
-    <div class="jumbotron mt-5">
-      <h1 class="display-1">WELCOME TO CT-HOSPITAL</h1>
-      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-      <hr class="my-4">
-      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </div>
-  </div> -->
 
-  <!-- <h1 style="text-align: center;" class="mat-display-1">Welcome to city Hospital</h1> -->
+
+
   <router-outlet></router-outlet>

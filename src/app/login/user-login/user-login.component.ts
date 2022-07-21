@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { AuthenticationService } from 'src/app/shared/authentication.service';
 
+
 @Component({
   selector: 'app-user-login',
   templateUrl: './user-login.component.html',
@@ -25,11 +26,9 @@ export class UserLoginComponent implements OnInit {
           console.log(response);
           localStorage.removeItem("token");
         },
-
         error: (err) => console.error(err)
       });
     }
-
   }
 
   onSubmit() {
@@ -43,7 +42,7 @@ export class UserLoginComponent implements OnInit {
     this.authService.authenticateUser(requestObj).subscribe({
       next: (response) => {
         localStorage.setItem("token", response.token);
-        this.toast.success({ detail: "Login success", summary: "Welcome, " + this.username, duration: 2000, sticky: true });
+        this.toast.success({ detail: "Login success", summary: "", duration: 2000});
         let role = JSON.parse(atob(response.token.split(".")[1])).roles[0].authority;
         //SETTING THE ROLE VALUE 
         this.authService.userRole.next(role);
@@ -51,7 +50,7 @@ export class UserLoginComponent implements OnInit {
           if (response.passwordChanged) {
             this.route.navigate(['admin/dashboard'])
           }else{
-            this.toast.success({ detail: "Login success", summary: "Please change your password", duration: 2000, sticky: true });
+            this.toast.success({ detail: "Login success", summary: "Please change your password", duration: 2000});
             this.route.navigate(['change-password']);
           }
         }
@@ -59,7 +58,7 @@ export class UserLoginComponent implements OnInit {
           if (response.passwordChanged) {
             this.route.navigate(['physician/dashboard'])
           } else {
-            this.toast.success({ detail: "Login success", summary: "Please change your password", duration: 2000, sticky: true });
+            this.toast.success({ detail: "Login success", summary: "Please change your password", duration: 2000 });
             this.route.navigate(['change-password']);
           }
 
@@ -68,7 +67,7 @@ export class UserLoginComponent implements OnInit {
           if (response.passwordChanged) {
             this.route.navigate(['nurse/dashboard'])
           } else {
-            this.toast.success({ detail: "Login success", summary: "Please change your password", duration: 2000, sticky: true });
+            this.toast.success({ detail: "Login success", summary: "Please change your password", duration: 2000});
             this.route.navigate(['change-password']);
           }
         }
@@ -76,7 +75,7 @@ export class UserLoginComponent implements OnInit {
           if (response.passwordChanged) {
             this.route.navigate(['patient/dashboard'])
           } else {
-            this.route.navigate(['change-password']);
+            this.route.navigate(['patient/details']);
           }
         }
       },
@@ -84,15 +83,19 @@ export class UserLoginComponent implements OnInit {
         this.inValidLogin = true;
         console.log(e.message.toString());
         if (e.error.message === "Bad credentials") {
-          this.toast.error({ detail: "Bad Credentials", summary: "Please try again", duration: 2000, sticky: true });
+          this.toast.error({ detail: "Bad Credentials", summary: "Please try again", duration: 2000 });
         }
-         
+        
+        if (e.error.httpStatus === "NOT_FOUND") {
+          this.toast.error({ detail: e.error.message, summary: "Please try again", duration: 2000 });
+        } 
+
         if (e.error.message === "User is Unauthorized" || e.error.message === "Invalid Token") {
-          this.toast.error({ detail: "Login failed", summary: "Please try again", duration: 2000, sticky: true });
+          this.toast.error({ detail: "Login failed", summary: "Please try again", duration: 2000 });
         } 
         
         if(e.error.httpStatus === 'BAD_REQUEST'){
-          this.toast.error({ detail: e.error.message, summary: "", duration: 2000, sticky: true });
+          this.toast.error({ detail: e.error.message, summary: "", duration: 2000});
         }
 
       }

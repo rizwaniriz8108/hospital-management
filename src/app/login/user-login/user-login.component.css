@@ -1,9 +1,44 @@
-mat-card {
-    max-width: 400px;
+/* mat-card {
+    max-width: 450px;
     margin: 7em auto;
     text-align: center;
+    max-height: 450px;
   }
-  
-  mat-form-field {
+   */
+  /* mat-form-field {
     display: block;
   }
+
+  .mat-card{
+    padding:0 ;
+    border-radius: 5px;
+  }
+  
+  .mat-card-content{
+    padding:5px ;
+  }
+
+  .mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: 0 2px 1px -1px rgba(0,0,0,1), 
+                0 1px 1px 0 rgba(0,0,0,1), 
+                0 1px 3px 0 rgba(0,0,0,1);
+} */
+
+mat-form-field {
+  width: 60%;
+}
+
+.mat-raised-button{
+  width: 60%;
+  font-size: large;
+  padding: 0.6rem;
+}
+
+.card {
+  flex-direction: row;
+  height: 110%;
+  border-radius: 10px;
+}
+.card img {
+  width: 50%;
+}

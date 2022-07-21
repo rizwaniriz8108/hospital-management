@@ -34,7 +34,7 @@ export class SideNavbarComponent implements OnInit{
     this.authService.logout().subscribe({
       next: (response) => {
         localStorage.removeItem("token");
-        this.toast.success({ detail: "Logout successfully", summary: "" , duration: 2000, sticky: true });
+        this.toast.success({ detail: "Logout successfully", summary: "" , duration: 2000 });
       },
       error: (err) => {
        // this.toast.success({ detail: "Logout failed", summary: "Something went wrong" , duration: 2000, sticky: true });

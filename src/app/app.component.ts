@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(private elementRef: ElementRef){}
 
   ngAfterViewInit() {
-    this.elementRef.nativeElement.ownerDocument
-        .body.style.backgroundColor = '#F0F0F0';
+    // this.elementRef.nativeElement.ownerDocument
+    //     .body.style.backgroundColor = '#F0F0F0';
 }
 }

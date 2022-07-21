@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort, Sort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 import { NgToastService } from 'ng-angular-popup';
+import { AuthenticationService } from 'src/app/shared/authentication.service';
 
 @Component({
   selector: 'app-display-hospital-user',
@@ -16,10 +17,11 @@ import { NgToastService } from 'ng-angular-popup';
 })
 
 
-export class DisplayHospitalUserComponent implements AfterViewInit{
+export class DisplayHospitalUserComponent implements AfterViewInit, OnInit{
   
   //By default display Physician (role-id = 2)
   roleId: number = 2;
+  
   
   displayedColumns: string[] = ['employeeId', 'firstname', 'lastname', 'dateOfJoining', 'status' ];
   dataSource = new  MatTableDataSource<HospitalUserData>();
@@ -28,7 +30,7 @@ export class DisplayHospitalUserComponent implements AfterViewInit{
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private userService : RegisterUserService, private _Activatedroute:ActivatedRoute, 
-    private _liveAnnouncer: LiveAnnouncer, private toast: NgToastService) {
+    private _liveAnnouncer: LiveAnnouncer, private toast: NgToastService, private authService : AuthenticationService) {
     this._Activatedroute.params.subscribe(params => { 
       this.roleId = params['roleId'];   
       console.log("RoleId "+this.roleId);
@@ -50,6 +52,9 @@ export class DisplayHospitalUserComponent implements AfterViewInit{
         }
       })
     });
+  }
+  ngOnInit(): void {
+    this.authService.userRole.next("ROLE_Admin");
   }
 
   ngAfterViewInit() {
@@ -83,10 +88,10 @@ export class DisplayHospitalUserComponent implements AfterViewInit{
     }
     this.userService.changeStatusOfUser(requestBody).subscribe({
       next: (response) => {
-        this.toast.success({ detail: "Status changed", summary: "" , duration: 100, sticky: true });
+        this.toast.success({ detail: "Status changed", summary: "" , duration: 1000 });
       },
       error: (err) => {
-        this.toast.success({ detail: "Failed", summary: "Something went wrong" , duration: 100, sticky: true });
+        this.toast.success({ detail: "Failed", summary: "Something went wrong" , duration: 1000 });
       }
     })
   }

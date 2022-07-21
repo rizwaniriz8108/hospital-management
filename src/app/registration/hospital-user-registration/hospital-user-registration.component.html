@@ -2,6 +2,15 @@
     <div class="row mt-4">
         <div class="col-sm-12 ">
             <mat-card>
+
+                <!-- spinnner element is 
+                defined with id loading -->
+                <div class="d-flex justify-content-center" >
+                    <div class="spinner-border" role="status" id="loading">
+                        <!-- <span class="sr-only" id="loading"></span> -->
+                    </div>
+                </div>
+
                 <mat-card-title>User Registration Form</mat-card-title>
                 <hr>
                 <mat-card-content>
@@ -10,7 +19,8 @@
                             <div class="col-sm-6">
                                 <mat-form-field appearance="fill">
                                     <mat-label>Role</mat-label>
-                                    <mat-select formControlName="role" name="role">
+                                    <mat-select formControlName="role" name="role"
+                                        (selectionChange)="enableSpeciality($event.value)">
                                         <mat-option value="2">Physician</mat-option>
                                         <mat-option value="3">Nurse</mat-option>
                                     </mat-select>
@@ -51,7 +61,8 @@
                             <div class="col-sm-6">
                                 <mat-form-field appearance="fill">
                                     <mat-label>Date of Birth</mat-label>
-                                    <input matInput [matDatepicker]="datepicker" datePickerFormat="DD/MM/YYYY"  name="dob">
+                                    <input matInput [matDatepicker]="datepicker" datePickerFormat="DD/MM/YYYY"
+                                        name="dob">
                                     <mat-datepicker-toggle matSuffix [for]="datepicker" name="dob">
                                     </mat-datepicker-toggle>
                                     <mat-datepicker #datepicker>
@@ -60,6 +71,14 @@
                                             <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
                                         </mat-datepicker-actions>
                                     </mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div *ngIf="showSpeciality" class="row">
+                            <div class="col-sm-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Specialization</mat-label>
+                                    <input matInput formControlName="specialization" name="specialization">
                                 </mat-form-field>
                             </div>
                         </div>

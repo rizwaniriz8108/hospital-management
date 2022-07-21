@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/shared/authentication.service';
 import {DashboardService} from 'src/app/shared/dashboard.service';
 
 @Component({
@@ -9,23 +10,26 @@ import {DashboardService} from 'src/app/shared/dashboard.service';
 export class AdminDashboardCardsComponent implements OnInit {
 
   greetMessage : string = '';
-  constructor(private dashboardService : DashboardService) { }
+  constructor(private dashboardService : DashboardService, private authService: AuthenticationService) { }
 
   physicianCount : number = 0;
   nurseCount : number = 0;
   patientCount : number = 0;
 
   ngOnInit(): void {
+    let firstname = this.authService.getUserFirstName();
     let currentDate = new Date();
     let hours = currentDate.getHours();
     if(hours < 12){
-      this.greetMessage = "Good Morning, Admin";
+      this.greetMessage = "Good Morning, "+firstname;
     }else if(hours >= 12 && hours <= 17){
-      this.greetMessage = "Good Afternoon, Admin";
+      this.greetMessage = "Good Afternoon, "+firstname;
     }else if(hours > 17 && hours <= 24){
-      this.greetMessage = "Good Evening, Admin";
+      this.greetMessage = "Good Evening, "+firstname;
     }
    this.getAllUserCount();
+
+   this.authService.userRole.next("ROLE_Admin");
   }
 
   getAllUserCount(){

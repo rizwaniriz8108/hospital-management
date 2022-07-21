@@ -15,7 +15,13 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSortModule} from '@angular/material/sort';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
 
 const material = [
   MatToolbarModule,
@@ -23,6 +29,7 @@ const material = [
   MatCardModule,
   MatMenuModule,
   MatIconModule,
+  MatAutocompleteModule,
   MatButtonModule,
   MatTableModule,
   MatSlideToggleModule,
@@ -33,7 +40,13 @@ const material = [
   MatNativeDateModule,
   MatFormFieldModule,
   MatPaginatorModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatDialogModule,
+  MatTabsModule,
+  MatStepperModule,
+  MatCheckboxModule,
+  MatSidenavModule,
+  MatListModule
 ];
 
 @NgModule({

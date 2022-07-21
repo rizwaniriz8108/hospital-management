@@ -1,0 +1,59 @@
+mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-form-field {
+    margin-top: 16px;
+    margin-left:10px;
+    width: 400px;
+  }
+  .mat-left{
+    margin-left: 30px;
+  }
+ 
+
+  .example-additional-selection {
+    opacity: 0.75;
+    font-size: 0.75em;
+  }
+
+  .example-section {
+    margin: 12px 0;
+  }
+  
+  .example-margin {
+    margin: 0 12px;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin-top: 4px;
+  } 
+ .sec {
+    display: table;
+    background-color: blanchedalmond;
+  }
+  .example-tel-input-container {
+    display: flex;
+  }
+  
+  .example-tel-input-element {
+    border: none;
+    background: none;
+    padding: 0;
+    outline: none;
+    font: inherit;
+    text-align: center;
+  }
+  
+  .example-tel-input-spacer {
+    opacity: 0;
+    transition: opacity 200ms;
+  }
+  
+  :host.example-floating .example-tel-input-spacer {
+    opacity: 1;
+  }
+  .example-button-row .mat-button-base {
+    margin: 8px 8px 8px 0;
+  }

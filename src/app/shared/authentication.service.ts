@@ -34,4 +34,8 @@ export class AuthenticationService {
   forgotPassword(username : string){
     return this.http.get<any>(this.API_URL + "/authenticate/forgotPassword/" + username);
   }
+
+  getUserFirstName() : string{
+    return JSON.parse(atob(localStorage.getItem("token").split(".")[1])).firstname;
+  }
 }

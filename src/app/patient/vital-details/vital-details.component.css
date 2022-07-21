@@ -1,0 +1,36 @@
+.container {
+    text-align: center;
+   
+  }
+  .example-button-row .mat-button-base {
+  
+    margin: 8px 8px 8px 0;
+  }
+  .example-spacer {
+    position: fixed;
+    flex: 1 1 auto;
+  }
+  .matdesc{
+    box-sizing: content-box;
+  
+  }
+  
+  .divMat {
+    /* margin-top: 15%; */
+    margin-left: 15%;
+    margin-right: 5%;
+  }
+  
+  .example-stepper {
+    
+      /* margin-top: 15px;
+      margin-left: 15%;
+      margin-right: 15%; */
+    }
+  
+    .mat-form-field {
+      margin-top: 16px;
+      width: 400px;
+    }  
+
+    

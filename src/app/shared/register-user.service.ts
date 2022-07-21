@@ -33,4 +33,11 @@ export class RegisterUserService {
     };
     return this.http.put(this.API_URL + "/user/update", reqeuestBody, requestOptions);
   }
+
+  getPhysicianDetails(){
+    let requestOptions = {                                                                                                                                                                                 
+      headers: new HttpHeaders({ Authorization: "Bearer " + localStorage.getItem("token")})
+    };
+    return this.http.get<any[]>(this.API_URL + "/user/getPhysicianDetails", requestOptions);
+  }
 }

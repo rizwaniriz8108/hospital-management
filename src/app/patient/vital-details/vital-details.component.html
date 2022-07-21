@@ -1,0 +1,240 @@
+<!-- <app-side-navbar></app-side-navbar> -->
+
+<div class="divMat">
+    <mat-stepper   class="example-stepper"  #stepper>
+      
+      <mat-step [stepControl]="firstFormGroup" label="Patient Vital Details" class="mat-step1">
+        <mat-card class="cards border" >
+       <form  [formGroup]="firstFormGroup">   
+          <div class ="container">
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Height</mat-label>        
+            <input  class="dropdown" type="number" min="40" max="250"  matInput placeholder="Enter Patient Height" formControlName="height" required>
+            <span matSuffix>CM</span>
+          </mat-form-field>
+    
+         <br>
+          
+          <mat-form-field appearance="fill">
+            <mat-label>Weight</mat-label>
+            <input matInput type="number" min="0"  placeholder="Enter Patient Weight" formControlName="weight" required>
+            <span matSuffix>KG</span>
+          </mat-form-field>
+          
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Blood Pressure (systolic) </mat-label>
+            <input matInput type="number" min="80" max="150"  placeholder="Enter Patient systolic Value" formControlName="systolic" required>
+            <span matSuffix>mm Hg</span>
+          </mat-form-field>
+        
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Blood Pressure (diastolic) </mat-label>
+            <input matInput type="number" min="50" max="100"  placeholder="Enter Patient Patient diastolic value " formControlName="diastolic" required>
+            <span matSuffix>mm Hg</span>
+          </mat-form-field>
+           
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Body Temperature </mat-label>
+            <input matInput type="number" min="95" max="105"  placeholder="Enter Patient Body Temperature" formControlName="temperature" required>
+            <span matSuffix>Fahrenheit (°F)</span>
+          </mat-form-field>
+    
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Respiration Rate </mat-label>
+            <input matInput type="number" min="8"  placeholder="Enter Patient Respiration Rate" formControlName="respirationRate" required>
+            <span matSuffix>BPM</span>
+          </mat-form-field>
+    
+          <div>
+            <button color="primary"    mat-raised-button  matStepperNext>Next</button>
+          </div>
+        </div>
+        </form>
+      </mat-card>
+    </mat-step>
+    
+      <mat-step [stepControl]="secondFormGroup" label="Diagnosis">
+        <form [formGroup]="secondFormGroup">
+        <div class="container">
+         <mat-form-field appearance="fill">
+            <mat-label>Diagnosis_Code </mat-label>
+            <input type="text"
+                   placeholder="Enter Diagnosis Code"
+                   aria-label="Number"
+                   matInput
+                   formControlName="diagnosticCode"
+                   [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+         <br>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Diagnosis Description </mat-label>
+            <input matInput formControlName="diagnosticDescription" placeholder="Diagnosis Description "
+                   required>
+          </mat-form-field>
+    
+    
+          <br>
+          <!-- [(ngModel)]="Diagnosis_Is_Depricated"  -->
+          
+          <mat-form-field appearance="fill">
+            <mat-label> Diagnosis_Is_Depricated</mat-label>
+            <mat-select name="Diagnosis_Is_Depricated"  formControlName="isDescriptive">
+              <mat-option value=true>true </mat-option>
+              <mat-option value=false>false </mat-option>
+            </mat-select>
+          </mat-form-field>
+        
+    
+          <div class="example-button-row">
+            <button color="primary" mat-raised-button matStepperPrevious>Back</button>
+            <button color="primary" mat-raised-button matStepperNext>Next</button>
+          </div>
+    
+          </div>
+        </form>
+    
+      </mat-step>
+      
+      
+      <mat-step [stepControl]="thirdFormGroup" label="Procedures">
+        <form [formGroup]="thirdFormGroup">
+          <div class="container">
+    
+            <mat-form-field appearance="fill">
+              <mat-label>Procedure Code </mat-label>
+              <input type="text"
+                     placeholder="Enter Procedure Code"
+                     aria-label="Number"
+                     matInput
+                     formControlName="procedureCode"
+                     [matAutocomplete]="auto">
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+           <br>
+      
+            <mat-form-field appearance="fill" class="matdesc">
+              <mat-label>Procedure Description </mat-label>
+              <input type="text" matInput formControlName="procedureDescription" placeholder="Procedure Description "
+                     required>
+            </mat-form-field>
+      
+      
+            <br>
+            <!-- [(ngModel)]="Diagnosis_Is_Depricated"  -->
+            
+            <mat-form-field appearance="fill">
+              <mat-label> Procedure_Is_Depricated</mat-label>
+              <mat-select name="Procedure_Is_Depricated" formControlName="procedureIsDescriptive">
+                <mat-option value=true>true </mat-option>
+                <mat-option value=false>false </mat-option>
+              </mat-select>
+            </mat-form-field>
+          
+      
+            <div class="example-button-row">
+              <button color="primary" mat-raised-button matStepperPrevious>Back</button>
+              <button color="primary" mat-raised-button matStepperNext>Next</button>
+            </div>
+         
+    
+        </div>
+    
+        </form>
+      </mat-step>
+    
+      <mat-step [stepControl]="forthFormGroup" label="Medication">
+        <form [formGroup]="forthFormGroup">
+          <div class="container">
+    
+            <mat-form-field appearance="fill" class="matdesc">
+              <mat-label>Drug_ID </mat-label>
+              <input matInput  placeholder="Drug_ID" required formControlName="drugId" >
+            </mat-form-field>
+            &nbsp; &nbsp;
+            <mat-form-field appearance="fill" class="matdesc">
+              <mat-label>Drug_Name  </mat-label>
+              <input matInput  placeholder="Drug Name" required formControlName="drugName">
+            </mat-form-field>
+           <br>
+            <mat-form-field appearance="fill" class="matdesc">
+              <mat-label>Drug_Generic_Name </mat-label>
+              <input matInput  placeholder="Drug_Generic_Name" required formControlName="drugGenericName">
+            
+            </mat-form-field>
+            &nbsp; &nbsp;
+            <mat-form-field appearance="fill" class="matdesc">
+              <mat-label>Drug_Brand_Name  </mat-label>
+              <input matInput  placeholder="Drug_Brand_Name" required formControlName="drugBrandName">
+            </mat-form-field>
+            <br>
+    
+            <mat-form-field appearance="fill">
+              <mat-label>Drug Form</mat-label>
+              <mat-select  required (selectionChange)="setDrugForm($event)">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let state of drugForm" [value]="state">{{state}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+    
+            
+           <br>
+    
+           <mat-form-field appearance="fill">
+            <mat-label>Drug Strength</mat-label>
+            <mat-select required  (selectionChange)="setDrugStrength($event)">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let state of drugStrength" [value]="state">{{state}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+    
+    
+           
+         <br>
+      
+            <div class="example-button-row">
+              <button color="primary" mat-raised-button matStepperPrevious>Back</button>
+              <button color="primary" mat-raised-button matStepperNext>Next</button>
+            </div>
+    
+        </div>
+    
+        </form>
+      </mat-step>
+    
+    
+      <mat-step>
+        <ng-template matStepLabel >Done </ng-template>
+        <p>Patient Vital Details are filled.</p>
+        <p>Patient Diagnosis is completed</p>
+        <div class="example-button-row">
+    
+          <button color="primary" mat-raised-button matStepperPrevious>Back</button>
+    
+          <button color="primary"  (click)="stepper.reset()" mat-raised-button matStepperPrevious>Reset</button>
+          
+          <button color="primary" mat-raised-button (click)="collectAndSendDataToBackend()">Submit</button>
+          
+        </div>
+        <p>If provided information is correct then click on Submit.    </p>
+        <p>If provided information is Incorrect then click on Reset.    </p>
+      </mat-step>
+      
+    </mat-stepper>
+    </div>
+    
+    <!-- <app-side-navbar></app-side-navbar>   -->

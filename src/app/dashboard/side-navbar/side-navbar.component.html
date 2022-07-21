@@ -14,16 +14,25 @@
       <!-- FOR ADMIN ONLY-->
 
       <!-- FOR PHYSICIAN ONLY-->
-      <mat-list-item *ngIf="role === 'ROLE_Physician'"  [routerLink]="['../physician/dashboard']">
+      <mat-list-item *ngIf="role === 'ROLE_Physician'" [routerLink]="['../physician/dashboard']">
         <mat-icon>dashboard</mat-icon> Dashboard
       </mat-list-item>
-      <mat-list-item *ngIf="role === 'ROLE_Physician'" [routerLink]="['../admin/user-registration']">
-         <mat-icon>schedule</mat-icon> Schedule
+      <mat-list-item *ngIf="role === 'ROLE_Physician'" [routerLink]="['../physician/schedule']">
+        <mat-icon>schedule</mat-icon> Schedule
       </mat-list-item>
-      <mat-list-item *ngIf="role === 'ROLE_Physician'" [routerLink]="['../admin/user-registration']">
+      <mat-list-item *ngIf="role === 'ROLE_Physician'" [routerLink]="['../physician/display-user']">
         <mat-icon>person</mat-icon> Patient
       </mat-list-item>
       <!-- FOR PHYSICIAN ONLY-->
+
+      <!-- FOR PATIENT ONLY-->
+      <mat-list-item *ngIf="role === 'ROLE_Patient'" [routerLink]="['../patient/dashboard']">
+        <mat-icon>dashboard</mat-icon> Dashboard
+      </mat-list-item>
+      <mat-list-item *ngIf="role === 'ROLE_Patient'" [routerLink]="['../patient/book-appointment']">
+        <mat-icon>schedule</mat-icon> Appointments
+      </mat-list-item>
+      <!-- FOR PATIENT ONLY-->
 
       <!-- FOR NURSE ONLY-->
       <mat-list-item *ngIf="role === 'ROLE_Nurse'" [routerLink]="['../admin/user-registration']">
@@ -65,7 +74,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>City hospital</span>
+      <span>City Hospital</span>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
