@@ -1,4 +1,36 @@
- <p class="app-toolbar">
+<nav class="navbar navbar-right sticky-top navbar-expand-lg " style="background-color: #3700B3;">
+  <button style="color:white;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="" role="button" ><i class="fa fa-bars" aria-hidden="true" style="color:#e6e6ff"></i></span>
+  </button>
+  <a class="navbar-brand" [routerLink]="['/home']"><strong>CT-Hospital</strong> </a>
+ 
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/login']">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/patient/registration']">Patient Registration</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/home']">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/home']">Contact Us</a>
+      </li>
+    </ul>
+    <!-- <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> -->
+  </div>
+</nav>
+
+
+<!-- <p class="app-toolbar">
     <mat-toolbar color="primary" >
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
@@ -17,8 +49,18 @@
       <button mat-button [routerLink]="['/home']"> Contact Us</button>
 
     </mat-toolbar>
-  </p>
+  </p> -->
 
 
 
   <router-outlet></router-outlet>
+<!-- 
+  <br>
+  <footer class="text-center text-white" style="background-color: #f1f1f1;">
+
+    <div class="text-center text-dark p-3" >
+      © 2020 Copyright:
+      <a class="text-dark" [routerLink]="['/home']">CThospital.com</a>
+    </div>
+  
+  </footer> -->

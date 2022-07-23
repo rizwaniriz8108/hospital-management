@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -27,5 +27,15 @@ export class PatientHealthDataService {
     return this.http.post(this.API_URL + '/patientMedication/saveDetailsByPatientId/' + patientId,request);
   }
 
+  isVitalDetailsAvailable(patientEmailId : string){
+    return this.http.get<any>(this.API_URL + "/patientHealth/getVitalDataByEmailId/"+patientEmailId);
+  }
 
+  downloadReport(patientEmailId){
+    const httpOptions = {
+      responseType: 'blob' as 'json'
+    };
+    return this.http.get(this.API_URL + "/patientReportExport/getPatientReportInPDF/"+patientEmailId, 
+    httpOptions);
+  }
 }

@@ -29,7 +29,8 @@ export class ForgotPasswordComponent implements OnInit {
         this.route.navigate(['login']);
       },
       error: (err) => {
-        this.toast.error({ detail: err.message, summary: "Something went wrong", duration: 2000});
+        console.log(err);
+        this.toast.error({ detail: "Something went wrong", summary: "", duration: 2000});
       }
     })
   }

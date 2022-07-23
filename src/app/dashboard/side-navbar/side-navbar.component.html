@@ -75,6 +75,10 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>City Hospital</span>
+      <span class="example-spacer"></span>
+      
+      <button class="btn btn-primary" mat-raised-button *ngIf="role === 'ROLE_Patient' && showReportIcon" (click)="downloadReport()">
+        <mat-icon >arrow_downward</mat-icon> Report</button>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
