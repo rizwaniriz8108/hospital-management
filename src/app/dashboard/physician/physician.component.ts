@@ -7,7 +7,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 import { NgToastService } from 'ng-angular-popup';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export interface TableData{
   id : number;
@@ -28,7 +28,7 @@ export class PhysicianComponent implements OnInit {
   greetMessage : string = '';
   constructor(private authService: AuthenticationService, private schedularService : SchedularService, 
     private _liveAnnouncer: LiveAnnouncer, private toast: NgToastService,
-     private route : Router) { }
+     private route : Router, private activatedRoute : ActivatedRoute) { }
 
     displayedColumns: string[] = ['date', 'time', 'doctor', 'patient', 'approve', 'reject'];
     dataSource = new  MatTableDataSource<TableData>();
@@ -120,6 +120,7 @@ export class PhysicianComponent implements OnInit {
     this.schedularService.changeAppointmentStatus(requestBody).subscribe({
       next: (response) => {
         this.toast.success({detail: "Done", duration: 1000});
+        this.ngOnInit();
       },
       error: (err) => {
         this.toast.error({detail: "Something went wrong", duration: 1000});

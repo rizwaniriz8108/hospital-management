@@ -117,7 +117,7 @@ export class BookAppointmentComponent implements OnInit {
   openAppoinmentDialog(): void {
     this.dialog.open(AppointmentDialogComponent, {
       width: '450px',
-      height: '360px'
+      height: '380px'
     });
   }
 }
