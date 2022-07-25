@@ -6,68 +6,62 @@
           <mat-label>Filter</mat-label>
           <input matInput (keyup)="applyFilter($event)" placeholder="Ex. John" #input>
         </mat-form-field>
-      
+
         <div class="mat-elevation-z8">
-          <table class="table" mat-table [dataSource]="dataSource" matSort matSortStart="desc" (matSortChange)="announceSortChange($event)">
-      
+          <table class="table" mat-table [dataSource]="dataSource" matSort matSortStart="desc"
+            (matSortChange)="announceSortChange($event)">
+
             <!-- EmployeeID Column -->
-            <ng-container *ngIf="roleId===2 || roleId === 3" matColumnDef="employeeId">
+            <ng-container matColumnDef="employeeId">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Employee-ID</th>
               <td mat-cell *matCellDef="let row"> {{row.employeeId}} </td>
             </ng-container>
 
-             <!-- PatientID Column -->
-             <ng-container *ngIf="roleId===4" matColumnDef="employeeId">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Patient-ID</th>
-              <td mat-cell *matCellDef="let row"> {{row.employeeId}} </td>
-            </ng-container>
-      
             <!-- Firstname Column -->
             <ng-container matColumnDef="firstname">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Firstname</th>
               <td mat-cell *matCellDef="let row"> {{row.firstName}} </td>
             </ng-container>
-      
+
             <!-- lastname Column -->
             <ng-container matColumnDef="lastname">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Lastname</th>
               <td mat-cell *matCellDef="let row"> {{row.lastName}} </td>
             </ng-container>
-      
-            <!-- Date of joining Column -->
-            <ng-container *ngIf="roleId===2 || roleId === 3" matColumnDef="dateOfJoining">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Date of Joining</th>
-              <td mat-cell *matCellDef="let row"> {{row.dateOfJoining}} </td>
-            </ng-container>
 
-            <!-- Date of Registration For Patient Column -->
-            <ng-container *ngIf="roleId===4" matColumnDef="dateOfJoining">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Date of Registration</th>
-              <td mat-cell *matCellDef="let row"> {{row.dateOfJoining}} </td>
-            </ng-container>
-      
+            <!-- Date of joining Column -->
+           
+              <ng-container matColumnDef="dateOfJoining">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Date Of Joining
+                </th>
+                <td mat-cell *matCellDef="let row"> {{row.dateOfJoining}} </td>
+              </ng-container>
+
+
             <!-- Status Column -->
             <ng-container matColumnDef="status">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
               <td mat-cell *matCellDef="let row">
-                <mat-slide-toggle color="primary" (change)="onToggle($event.checked, row.employeeId)" [checked]="row.status"></mat-slide-toggle>
+                <mat-slide-toggle color="primary" (change)="onToggle($event.checked, row.employeeId)"
+                  [checked]="row.status"></mat-slide-toggle>
               </td>
             </ng-container>
-      
-      
+
+
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      
+
             <!-- Row shown when there is no matching data. -->
             <tr class="mat-row" *matNoDataRow>
               <!-- <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td> -->
               <td class=" text-center mat-cell" colspan="4">No data</td>
             </tr>
           </table>
-      
+
           <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
         </div>
-      
+
       </div>
     </div>
   </div>
