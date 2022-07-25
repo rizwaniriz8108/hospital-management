@@ -11,8 +11,14 @@
           <table class="table" mat-table [dataSource]="dataSource" matSort matSortStart="desc" (matSortChange)="announceSortChange($event)">
       
             <!-- EmployeeID Column -->
-            <ng-container matColumnDef="employeeId">
+            <ng-container *ngIf="roleId===2 || roleId === 3" matColumnDef="employeeId">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Employee-ID</th>
+              <td mat-cell *matCellDef="let row"> {{row.employeeId}} </td>
+            </ng-container>
+
+             <!-- PatientID Column -->
+             <ng-container *ngIf="roleId===4" matColumnDef="employeeId">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Patient-ID</th>
               <td mat-cell *matCellDef="let row"> {{row.employeeId}} </td>
             </ng-container>
       
@@ -29,8 +35,14 @@
             </ng-container>
       
             <!-- Date of joining Column -->
-            <ng-container matColumnDef="dateOfJoining">
+            <ng-container *ngIf="roleId===2 || roleId === 3" matColumnDef="dateOfJoining">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Date of Joining</th>
+              <td mat-cell *matCellDef="let row"> {{row.dateOfJoining}} </td>
+            </ng-container>
+
+            <!-- Date of Registration For Patient Column -->
+            <ng-container *ngIf="roleId===4" matColumnDef="dateOfJoining">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Date of Registration</th>
               <td mat-cell *matCellDef="let row"> {{row.dateOfJoining}} </td>
             </ng-container>
       
