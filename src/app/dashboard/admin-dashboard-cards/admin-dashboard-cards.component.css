@@ -9,10 +9,10 @@
     display: inline-block;
   } */
 
-  .tohover:hover{
+  /* .tohover:hover{
     transform: scale(1.1);
     transition: transform 130ms ease-in-out;
-  }
+  } */
 
   .card-content{
     text-align: center;

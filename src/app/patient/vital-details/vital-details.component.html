@@ -88,7 +88,7 @@
           <!-- [(ngModel)]="Diagnosis_Is_Depricated"  -->
           
           <mat-form-field appearance="fill">
-            <mat-label> Diagnosis_Is_Depricated</mat-label>
+            <mat-label> Diagnosis_Is_Descriptive</mat-label>
             <mat-select name="Diagnosis_Is_Depricated"  formControlName="isDescriptive">
               <mat-option value=true>true </mat-option>
               <mat-option value=false>false </mat-option>
@@ -138,7 +138,7 @@
             <!-- [(ngModel)]="Diagnosis_Is_Depricated"  -->
             
             <mat-form-field appearance="fill">
-              <mat-label> Procedure_Is_Depricated</mat-label>
+              <mat-label> Procedure_Is_Descriptive</mat-label>
               <mat-select name="Procedure_Is_Depricated" formControlName="procedureIsDescriptive">
                 <mat-option value=true>true </mat-option>
                 <mat-option value=false>false </mat-option>
@@ -220,7 +220,6 @@
       <mat-step>
         <ng-template matStepLabel >Done </ng-template>
         <p>Patient Vital Details are filled.</p>
-        <p>Patient Diagnosis is completed</p>
         <div class="example-button-row">
     
           <button color="primary" mat-raised-button matStepperPrevious>Back</button>
@@ -230,8 +229,6 @@
           <button color="primary" mat-raised-button (click)="collectAndSendDataToBackend()">Submit</button>
           
         </div>
-        <p>If provided information is correct then click on Submit.    </p>
-        <p>If provided information is Incorrect then click on Reset.    </p>
       </mat-step>
       
     </mat-stepper>

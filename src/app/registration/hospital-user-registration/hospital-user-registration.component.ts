@@ -85,7 +85,7 @@ export class HospitalUserRegistrationComponent implements OnInit {
       this.userRegisterService.registerUser(requestBody).subscribe({
         next: (response) => {
           this.hideloader();
-          this.toast.success({ detail: response.message, summary: "", duration: 2000, sticky: true });
+          this.toast.success({ detail: response.message, summary: "", duration: 2000 });
           //this.clearFormFields();
           if(this.registerForm.value.role == 2){
             this.route.navigate(['/admin/display-user/2']);
@@ -98,7 +98,7 @@ export class HospitalUserRegistrationComponent implements OnInit {
         },
         error: (e) => {
           this.hideloader();
-          this.toast.error({ detail: e.message, summary: "Please try again", duration: 2000, sticky: true });
+          this.toast.error({ detail: e.message, summary: "Please try again", duration: 2000 });
         }
       });
     }
